@@ -23,7 +23,7 @@ rm -rf /var/cache/apk/*
 # docker-php-ext-configure json && \
 RUN docker-php-ext-install opcache \
 docker-php-ext-configure session && \
-docker-php-ext-configure ctype && \
+# docker-php-ext-configure ctype && \
 docker-php-ext-install intl \
 docker-php-ext-configure tokenizer && \
 docker-php-ext-configure simplexml && \
