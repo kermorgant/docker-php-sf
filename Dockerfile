@@ -7,7 +7,6 @@ RUN apk --no-cache --update add \
 libxml2-dev \
 libsasl \
 db \
-postgresql-libs \
 postgresql-dev \
 sqlite-dev \
 curl \
@@ -21,7 +20,8 @@ rm -rf /var/cache/apk/*
 
 # Configure PHP extensions
 # docker-php-ext-configure json && \
-RUN docker-php-ext-install opcache
+RUN docker-php-ext-install opcache && \
+    docker-php-ext-install pdo_pgsql
 # docker-php-ext-configure session && \
 # # docker-php-ext-configure ctype && \
 # docker-php-ext-install intl \
