@@ -32,8 +32,8 @@ docker-php-ext-configure mbstring && \
 docker-php-ext-configure zip && \
 docker-php-ext-configure pdo && \
 docker-php-ext-configure pdo_sqlite
-docker-php-ext-configure pdo_mysql && \
-# docker-php-ext-configure pdo_pgsql && \
+docker-php-ext-configure pdo_mysql
+#                         docker-php-ext-configure pdo_pgsql && \
 # docker-php-ext-configure curl && \
 # docker-php-ext-configure iconv && \
 # docker-php-ext-configure xml && \
