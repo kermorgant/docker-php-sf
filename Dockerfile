@@ -33,6 +33,7 @@ RUN apk --no-cache --update add \
         intl \
         gd \
         opcache \
+        pdo \
         pdo_mysql \
         pdo_pgsql \
         zip \
