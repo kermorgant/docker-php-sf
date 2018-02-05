@@ -22,8 +22,7 @@ RUN apk --no-cache --update add \
         postgresql-dev \
         sqlite-dev \
         zlib-dev \
-    && rm -rf /tmp/* \
-    && rm -rf /var/cache/apk/* \
+    && pecl install xdebug-2.6.0 \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure gd \
        --with-freetype-dir=/usr/include/ \
@@ -37,6 +36,7 @@ RUN apk --no-cache --update add \
         pdo_mysql \
         pdo_pgsql \
         zip \
+    && docker-php-ext-enable xdebug \
     && docker-php-ext-enable intl \
     && { find /usr/local/lib -type f -print0 | xargs -0r strip --strip-all -p 2>/dev/null || true; } \
     && apk del .build-deps \
