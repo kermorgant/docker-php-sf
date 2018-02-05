@@ -9,25 +9,30 @@ RUN apk --no-cache --update add \
     libxml2-dev \
     libsasl \
     db \
-    postgresql-dev \
-    sqlite-dev \
     curl \
-    libpng-dev \
-    libjpeg-turbo-dev \
-    freetype-dev \
     && apk add --no-cache --virtual .php-deps \
        make \
     && apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
-        zlib-dev \
-        icu-dev \
+        freetype-dev \
         g++ \
+        icu-dev \
+        libpng-dev \
+        libjpeg-turbo-dev \
+        postgresql-dev \
+        sqlite-dev \
+        zlib-dev \
     && rm -rf /tmp/* \
     && rm -rf /var/cache/apk/* \
     && docker-php-ext-configure intl \
+    && docker-php-ext-configure gd \
+       --with-freetype-dir=/usr/include/ \
+       --with-png-dir=/usr/include/ \
+       --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install \
         bcmath \
         intl \
+        gd \
         opcache \
         pdo_pgsql \
         zip \
