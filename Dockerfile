@@ -36,7 +36,7 @@ RUN apk --no-cache --update add \
         pdo_mysql \
         pdo_pgsql \
         zip \
-    && docker-php-ext-enable
+    && docker-php-ext-enable \
        pdo_pgsql \
        intl \
        xdebug \
