@@ -14,7 +14,7 @@ RUN apk --no-cache --update add \
     curl \
     libpng-dev \
     libjpeg-turbo-dev \
-    freetype-dev && \
+    freetype-dev \
     && apk add --no-cache --virtual .php-deps \
        make \
     && apk add --no-cache --virtual .build-deps \
@@ -22,8 +22,8 @@ RUN apk --no-cache --update add \
         zlib-dev \
         icu-dev \
         g++ \
-    rm -rf /tmp/* && \
-    rm -rf /var/cache/apk/* \
+    && rm -rf /tmp/* \
+    && rm -rf /var/cache/apk/* \
     && docker-php-ext-configure intl \
     && docker-php-ext-install \
         intl \
