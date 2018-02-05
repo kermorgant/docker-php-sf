@@ -2,7 +2,6 @@ FROM php:7.2-cli-alpine
 
 MAINTAINER Mikael Kermorgant <mikael@kgtech.fi>
 
-mkdir /var/www
 
 # Install dependencies
 RUN apk --no-cache --update add \
@@ -33,6 +32,7 @@ RUN apk --no-cache --update add \
     && docker-php-ext-enable intl \
     && { find /usr/local/lib -type f -print0 | xargs -0r strip --strip-all -p 2>/dev/null || true; } \
     && apk del .build-deps \
-    && rm -rf /tmp/* /usr/local/lib/php/doc/* /var/cache/apk/*
+    && rm -rf /tmp/* /usr/local/lib/php/doc/* /var/cache/apk/* \
+    && mkdir /var/www
 
 WORKDIR /var/www
