@@ -36,8 +36,10 @@ RUN apk --no-cache --update add \
         pdo_mysql \
         pdo_pgsql \
         zip \
-    && docker-php-ext-enable xdebug \
-    && docker-php-ext-enable intl \
+    && docker-php-ext-enable
+       pdo_pgsql \
+       intl \
+       xdebug \
     && { find /usr/local/lib -type f -print0 | xargs -0r strip --strip-all -p 2>/dev/null || true; } \
     && apk del .build-deps \
     && rm -rf /tmp/* /usr/local/lib/php/doc/* /var/cache/apk/* \
