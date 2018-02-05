@@ -34,6 +34,7 @@ RUN apk --no-cache --update add \
         intl \
         gd \
         opcache \
+        pdo_mysql \
         pdo_pgsql \
         zip \
     && docker-php-ext-enable intl \
