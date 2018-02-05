@@ -26,9 +26,11 @@ RUN apk --no-cache --update add \
     && rm -rf /var/cache/apk/* \
     && docker-php-ext-configure intl \
     && docker-php-ext-install \
+        bcmath \
         intl \
         opcache \
         pdo_pgsql \
+        zip \
     && docker-php-ext-enable intl \
     && { find /usr/local/lib -type f -print0 | xargs -0r strip --strip-all -p 2>/dev/null || true; } \
     && apk del .build-deps \
