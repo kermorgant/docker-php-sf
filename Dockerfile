@@ -34,10 +34,13 @@ RUN apk --no-cache --update add \
         intl \
         gd \
         opcache \
+        pdo \
         pdo_mysql \
         pdo_pgsql \
         zip \
-    && docker-php-ext-enable
+    && docker-php-ext-enable \
+       pdo \
+       pdo_mysql \
        pdo_pgsql \
        intl \
        xdebug \
