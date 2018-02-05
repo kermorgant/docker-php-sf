@@ -12,6 +12,7 @@ RUN apk --no-cache --update add \
     curl \
     && apk add --no-cache --virtual .php-deps \
        make \
+       libpng \
     && apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
         freetype-dev \
