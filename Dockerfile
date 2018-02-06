@@ -5,14 +5,19 @@ MAINTAINER Mikael Kermorgant <mikael@kgtech.fi>
 
 # Install dependencies
 RUN apk --no-cache --update add \
-    icu \
-    libxml2-dev \
     libsasl \
     db \
     curl \
     && apk add --no-cache --virtual .php-deps \
        make \
+       freetype \
+       icu \
        libpng \
+       libjpeg-turbo \
+       libxml2 \
+       postgresql-libs \
+       sqlite-libs \
+       zlib \
     && apk add --no-cache --virtual .build-deps \
         $PHPIZE_DEPS \
         freetype-dev \
@@ -20,6 +25,7 @@ RUN apk --no-cache --update add \
         icu-dev \
         libpng-dev \
         libjpeg-turbo-dev \
+        libxml2-dev \
         postgresql-dev \
         sqlite-dev \
         zlib-dev \
@@ -44,9 +50,9 @@ RUN apk --no-cache --update add \
        pdo_pgsql \
        intl \
        xdebug \
-    && { find /usr/local/lib -type f -print0 | xargs -0r strip --strip-all -p 2>/dev/null || true; } \
     && apk del .build-deps \
     && rm -rf /tmp/* /usr/local/lib/php/doc/* /var/cache/apk/* \
+    && { find /usr/local/lib -type f -print0 | xargs -0r strip --strip-all -p 2>/dev/null || true; } \
     && mkdir /var/www
 
 WORKDIR /var/www
