@@ -56,3 +56,5 @@ RUN apk --no-cache --update add \
     && mkdir /var/www
 
 WORKDIR /var/www
+COPY ["entrypoint.sh", "/"]
+ENTRYPOINT ["/entrypoint.sh"]
