@@ -38,7 +38,7 @@ RUN apk --no-cache --update add \
        --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install \
         bcmath \
-        exif --with-libdir=/usr/lib \
+        exif \
         intl \
         gd \
         opcache \
